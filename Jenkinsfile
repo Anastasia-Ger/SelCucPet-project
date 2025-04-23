@@ -1,10 +1,37 @@
 pipeline {
-    agent { docker { image 'maven:3.9.9-eclipse-temurin-21-alpine' } }
+    agent any
+
+    tools {
+        maven 'Maven 3.9.9'
+        jdk 'Java 17'
+    }
+
     stages {
-        stage('build') {
+        stage('Checkout') {
             steps {
-                sh 'mvn --version'
+                echo 'Checkout stage has started'
+                git 'https://github.com/Anastasia-Ger/SelCucPet-project.git'
             }
+        }
+
+        stage('Run Tests') {
+            steps {
+                echo 'Tests stage has started'
+                sh 'mvn clean test'
+            }
+        }
+
+        stage('Publish Results') {
+            steps {
+                echo 'Resuts stage has started'
+                junit '**/target/surefire-reports/*.xml'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
         }
     }
 }
