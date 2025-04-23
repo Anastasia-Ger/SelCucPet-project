@@ -9,18 +9,21 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                echo 'Checkout stage has started'
                 git 'https://github.com/Anastasia-Ger/SelCucPet-project.git'
             }
         }
 
         stage('Run Tests') {
             steps {
+                echo 'Tests stage has started'
                 sh 'mvn clean test'
             }
         }
 
         stage('Publish Results') {
             steps {
+                echo 'Resuts stage has started'
                 junit '**/target/surefire-reports/*.xml'
             }
         }
