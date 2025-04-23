@@ -23,7 +23,7 @@ public class GoSteps {
     GoPage goPage;
     String pageLanguage;
 
-    @Before
+   @Before
     public void initializeDriver() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));

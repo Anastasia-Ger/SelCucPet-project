@@ -12,6 +12,6 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 @IncludeEngines("cucumber") //cucumber tests will be executed in Junit test suite
 @SelectClasspathResource("features") //cucum.tests will be available in the features folder under src/test/resources
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value="json:target/out.json")
-public class TestRunner {
+public class  TestRunner {
     //empty class
 }
