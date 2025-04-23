@@ -17,7 +17,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 echo 'Tests stage has started'
-                sh 'mvn clean test'
+                bat 'mvn clean test'
             }
         }
 
