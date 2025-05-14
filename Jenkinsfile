@@ -17,21 +17,9 @@ pipeline {
         stage('Run Tests') {
             steps {
                 echo 'Tests stage has started'
-                sh 'mvn clean test'
+                bat 'mvn clean test'
             }
-        }
-
-        stage('Publish Results') {
-            steps {
-                echo 'Resuts stage has started'
-                junit '**/target/surefire-reports/*.xml'
-            }
-        }
+        }       
     }
-
-    post {
-        always {
-            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
-        }
-    }
+    
 }
